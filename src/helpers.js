@@ -1,4 +1,5 @@
 const { readFile } = require("./utils");
+const Heading = `<h1>Hello WORLD</h1>`
 
 //@TODO I dont like this method. it's hard to read it
 function replaceMarkdown(regexp, callback) {
@@ -11,7 +12,7 @@ function replaceMarkdown(regexp, callback) {
 }
 
 function replaceHTMLWrapper(wrapperName, config, folder = "typography") {
-  let wrapper = readFile(`${folder}/${wrapperName}`);
+  let wrapper = Heading;
 
   Object.keys(config).forEach((name) => {
     wrapper = wrapper.replace(new RegExp(`{${name}}`, "g"), config[name]);
@@ -19,6 +20,16 @@ function replaceHTMLWrapper(wrapperName, config, folder = "typography") {
 
   return wrapper;
 }
+
+// function replaceHTMLWrapper(wrapperName, config, folder = "typography") {
+//   let wrapper = readFile(`${folder}/${wrapperName}`);
+
+//   Object.keys(config).forEach((name) => {
+//     wrapper = wrapper.replace(new RegExp(`{${name}}`, "g"), config[name]);
+//   });
+
+//   return wrapper;
+// }
 
 function replaceMarkdownPreviewText(regexp) {
 this.content = this.content.replace(
